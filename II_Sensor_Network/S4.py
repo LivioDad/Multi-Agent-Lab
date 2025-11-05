@@ -1,0 +1,34 @@
+import paho.mqtt.client as mqtt
+import time, random
+
+# Sensor parameters that go to automatically build the topic
+refuge_name = "refuge_Monviso"
+room = "dormitory"
+measurement_type = "temperature"
+sensor_id = "04"
+
+TOPIC = f"{refuge_name}/{room}/{measurement_type}/{sensor_id}"
+print(f"Topic: {TOPIC}")
+
+BROKER = "localhost"
+PORT = 1883
+
+c = mqtt.Client(client_id=sensor_id)
+
+c.connect(BROKER,PORT)
+print(f"Connected to broker '{BROKER}'")
+c.loop_start
+
+try:
+    while True:
+        reading = round(random.uniform(15, 25), 2)
+        payload = str(reading)
+        c.publish(TOPIC, payload=payload, qos=0)
+        print(f"[published] {TOPIC} <- {payload}")
+        time.sleep(1)
+
+except KeyboardInterrupt:
+    print(f"{sensor_id} stopped succesfully")
+finally:
+    c.loop_stop()
+    c.disconnect()
