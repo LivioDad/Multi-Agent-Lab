@@ -9,7 +9,7 @@ class Printer:
             data = payload.decode() if isinstance(payload, (bytes, bytearray)) else str(payload)
         print(f'Recieved message on topic "{topic}": {data}')
 
-BROKER = "broker.hivemq.com"
+BROKER = "localhost"
 PORT   = 1883
 TOPIC  = "hello"
 

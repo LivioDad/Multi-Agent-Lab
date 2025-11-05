@@ -1,7 +1,7 @@
 from MyMQTT import *
 import time
 
-BROKER = "broker.hivemq.com"
+BROKER = "localhost"
 PORT   = 1883
 TOPIC  = "hello"
          #(self, clientID, broker, port, notifier):
