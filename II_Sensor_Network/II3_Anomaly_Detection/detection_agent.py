@@ -92,7 +92,7 @@ class DetectionAgent:
             agent_id = last
             with self._lock:
                 self._last_avg_by_type[measurement_type] = value
-            print(f"[DETECT] New average from {agent_id} for {measurement_type}: {value}")
+            # print(f"[DETECT] New average from {agent_id} for {measurement_type}: {value}")
         else:
             # Raw sensor reading: refuge/<room>/<measurement_type>/<sensor_id>
             room = second

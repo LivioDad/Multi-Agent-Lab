@@ -31,13 +31,13 @@ SENSORS = [
     dict(sensor_id="S4",  room="dormitory",      measurement_type="temperature", value_min=15.0,   value_max=25.0),
     dict(sensor_id="S5",  room="kitchen",        measurement_type="temperature", value_min=15.0,   value_max=25.0, can_fail=True, error_probability=0.2, error_offset=60.0),
     dict(sensor_id="S6",  room="kitchen",        measurement_type="humidity",    value_min=20.0,   value_max=85.0),
-    dict(sensor_id="S7",  room="outdoor",        measurement_type="temperature", value_min=-10.0,  value_max=5.0, can_fail=True, error_probability=0.1, error_offset=40.0),
+    dict(sensor_id="S7",  room="outdoor",        measurement_type="temperature", value_min=-10.0,  value_max=5.0,  can_fail=True, error_probability=0.1, error_offset=40.0),
     dict(sensor_id="S8",  room="outdoor",        measurement_type="humidity",    value_min=10.0,   value_max=100.0),
     dict(sensor_id="S9",  room="outdoor",        measurement_type="wind_speed",  value_min=0.0,    value_max=20.0),
     dict(sensor_id="S10", room="kitchen",        measurement_type="power",       value_min=500.0,  value_max=900.0),
 ]
 
-# ---- Configurations of Averaging Agents ----
+# Configurations of Averaging Agents
 AVERAGING_AGENTS = [
     dict(agent_id="AA1", measurement_type="temperature"),
     dict(agent_id="AA2", measurement_type="humidity"),
@@ -85,7 +85,7 @@ def main():
         t = threading.Thread(target=agent.run, name=f"agent-{aa['agent_id']}", daemon=True)
         threads.append(t)
 
-    # --- Detection & Identification agents ---
+    # Detection & Identification agents
     detection_agent = DetectionAgent(
         broker_host=BROKER_HOST,
         broker_port=BROKER_PORT,
@@ -101,8 +101,10 @@ def main():
     threads.append(threading.Thread(target=detection_agent.run, name="agent-detect", daemon=True))
     threads.append(threading.Thread(target=id_agent.run, name="agent-id", daemon=True))
 
-    # --- Start GUI interface agent ---
-    gui_process = Process(target=gui_main)
+    # Start GUI interface agent
+    num_sensors = len(SENSORS)
+    num_aa = len(AVERAGING_AGENTS)
+    gui_process = Process(target=gui_main, args=(num_sensors, num_aa))
     gui_process.start()
 
     # Start all threads

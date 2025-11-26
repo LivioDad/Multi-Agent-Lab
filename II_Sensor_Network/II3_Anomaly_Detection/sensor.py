@@ -29,7 +29,7 @@ class Sensor:
         time_sensors: float,
         value_min: float,
         value_max: float,
-        # --- optional fault configuration (for anomaly detection exercise) ---
+        # optional fault configuration for anomaly detection)
         can_fail: bool = False,
         error_probability: float = 0.2,
         error_offset: float = 20.0,
@@ -55,7 +55,7 @@ class Sensor:
         self.client = mqtt.Client()
         self._stop_event = threading.Event()
 
-    # ---------- MQTT callbacks ----------
+    # MQTT callbacks
 
     def _on_connect(self, client, userdata, flags, rc):
         status = "OK" if rc == 0 else f"ERROR rc={rc}"
@@ -78,7 +78,7 @@ class Sensor:
         print(f"[{self.sensor_id}] Received RESET command -> disabling faulty mode.")
         self.can_fail = False
 
-    # ---------- Public API ----------
+    # Public API
 
     def connect(self) -> None:
         """Connects to the broker and starts MQTT loop in background."""
