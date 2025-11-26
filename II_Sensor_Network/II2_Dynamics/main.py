@@ -142,8 +142,10 @@ def main():
     stop_event = threading.Event()
 
     # Start GUI in separate process
-    gui_process = Process(target=gui_main)
+    num_aa = len(AVERAGING_AGENTS)
+    gui_process = Process(target=gui_main, args=(num_aa,))
     gui_process.start()
+
 
     lifecycle_threads = []
 

@@ -88,7 +88,7 @@ class InterfaceGUI:
     plus a countdown label for the next expected update
     """
 
-    def __init__(self, root: tk.Tk, ia: InterfaceAgent, refresh_period_s: int = REFRESH_PERIOD_S):
+    def __init__(self, root: tk.Tk, ia: InterfaceAgent, refresh_period_s: int = REFRESH_PERIOD_S, table_height: int = 5):
         self.root = root
         self.ia = ia
         self.refresh_period_s = refresh_period_s
@@ -109,7 +109,7 @@ class InterfaceGUI:
 
         #  Table
         columns = ("measurement_type", "agent_id", "value", "timestamp")
-        self.tree = ttk.Treeview(root, columns=columns, show="headings")
+        self.tree = ttk.Treeview(root, columns=columns, show="headings", height=table_height)
         self.tree.heading("measurement_type", text="Measurement type")
         self.tree.heading("agent_id", text="Agent")
         self.tree.heading("value", text="Last average")
@@ -195,14 +195,14 @@ class InterfaceGUI:
         self.root.after(200, self._process_queue)
 
 
-def main():
+def main(num_aa: int = 3):
     # Create and start InterfaceAgent (MQTT)
     ia = InterfaceAgent(BROKER_HOST, BROKER_PORT, REFUGE_NAME)
     ia.connect()
 
     # Create the GUI
     root = tk.Tk()
-    gui = InterfaceGUI(root, ia, refresh_period_s=REFRESH_PERIOD_S)
+    gui = InterfaceGUI(root, ia, refresh_period_s=REFRESH_PERIOD_S,table_height=num_aa)
 
     try:
         root.mainloop()
