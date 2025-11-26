@@ -38,7 +38,7 @@ class AveragingAgent:
         self._values = []
         self._lock = threading.Lock()
 
-    # MQTT callbacks
+    # ---------- MQTT callbacks ----------
 
     def _on_connect(self, client, userdata, flags, rc):
         status = "OK" if rc == 0 else f"ERROR rc={rc}"
@@ -52,13 +52,13 @@ class AveragingAgent:
         try:
             value = float(msg.payload.decode())
         except ValueError:
-            print(f"[{self.agent_id}] Skipping non-numeric payload on {msg.topic}: {msg.payload!r}")
+            # print(f"[{self.agent_id}] Skipping non-numeric payload on {msg.topic}: {msg.payload!r}")
             return
 
         with self._lock:
             self._values.append(value)
 
-    # Public API
+    # ---------- Public API ----------
 
     def connect(self) -> None:
         """Connects to the broker and starts MQTT loop in background."""
@@ -83,17 +83,17 @@ class AveragingAgent:
                             avg = None
                     if avg is not None:
                         self.client.publish(self.topic_out, payload=str(avg), qos=0)
-                        print(
-                            f"[{self.agent_id}] Average {self.measurement_type} "
-                            f"in last {self.window_s}s -> {avg}"
-                        )
+                        # print(
+                        #     f"[{self.agent_id}] Average {self.measurement_type} "
+                        #     f"in last {self.window_s}s -> {avg}"
+                        # )
                     t_start = now
 
                 time.sleep(0.1)
         finally:
             self.client.loop_stop()
             self.client.disconnect()
-            print(f"[{self.agent_id}] stopped successfully")
+            #print(f"[{self.agent_id}] stopped successfully")
 
     def stop(self) -> None:
         """Clean stop"""

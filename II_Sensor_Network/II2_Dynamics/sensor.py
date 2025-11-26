@@ -38,13 +38,13 @@ class Sensor:
         self.client = mqtt.Client()
         self._stop_event = threading.Event()
 
-    # MQTT callbacks
+    # ---------- MQTT callbacks ----------
 
     def _on_connect(self, client, userdata, flags, rc):
         status = "OK" if rc == 0 else f"ERROR rc={rc}"
-        print(f"[{self.sensor_id}] Connected to MQTT broker ({status}). Topic: {self.topic}")
+        # print(f"[{self.sensor_id}] Connected to MQTT broker ({status}). Topic: {self.topic}")
 
-    # Public API
+    # ---------- Public API ----------
 
     def connect(self) -> None:
         """Connects to the broker and starts MQTT loop in background."""
@@ -60,7 +60,7 @@ class Sensor:
                 reading = round(random.uniform(self.value_min, self.value_max), 2)
                 payload = str(reading)
                 self.client.publish(self.topic, payload=payload, qos=0)
-                print(f"[{self.sensor_id}] [published] {self.topic} <- {payload}")
+                # print(f"[{self.sensor_id}] [published] {self.topic} <- {payload}")
 
                 slept = 0.0
                 step = 0.1
@@ -70,7 +70,7 @@ class Sensor:
         finally:
             self.client.loop_stop()
             self.client.disconnect()
-            print(f"[{self.sensor_id}] stopped successfully")
+            # print(f"[{self.sensor_id}] stopped successfully")
 
     def stop(self) -> None:
         """Clean stop"""
