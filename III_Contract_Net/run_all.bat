@@ -4,7 +4,7 @@ setlocal EnableDelayedExpansion
 
 set PROJ1=%~dp0..
 set PROJ=%~dp0
-set VENV=%PROJ1%\.venv\Scripts\activate.bat
+set VENV=%PROJ1%\.venv\Scripts\activate
 
 if not exist "%VENV%" (
   echo Virtual environment not found at:
@@ -68,5 +68,6 @@ start "Supervisor" cmd /k call "%VENV%" ^&^& python "%PROJ%\supervisor.py" --job
 
 echo Launched 12 machines + 1 supervisor.
 pause
+
 
 
