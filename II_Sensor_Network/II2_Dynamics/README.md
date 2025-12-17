@@ -47,7 +47,12 @@ Defined in `config.json`:
 - window_s
 
 ## Execution
-```bash
-pip install paho-mqtt
-python3 main.py
-```
+1. (Optional) Create and activate a Python virtual environment and install dependencies:
+   ```bash
+   python -m venv .venv
+   source .venv/bin/activate
+   pip install paho-mqtt
+   ```
+2. Start the MQTT broker (e.g. shiftr.io Desktop)
+3. Run: ```bash python3 main.py```
+
