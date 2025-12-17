@@ -39,11 +39,12 @@ The MQTT clients can be configured using the following parameters:
 
 ## How to run 
 1. (Optional) Create and activate a Python virtual environment:
-bash
+   ```bash
    python -m venv .venv
    source .venv/bin/activate
    pip install paho-mqtt
+   ```
 
 2. Start the MQTT broker (e.g. shiftr.io Desktop)
-3a. Run the python script Shiftr_io_publisher.py and look at the GUI in the Shiftr.io app
-3b. Run the python script Publisher.py and than Subscriber.py(in a separated terminal) and check the console output
+3a. Run the python script ```Shiftr_io_publisher.py``` and look at the GUI in the Shiftr.io app
+3b. Run the python script ```Publisher.py``` and than ```Subscriber.py```(in a separated terminal) and check the console output

@@ -55,6 +55,7 @@ Defined in `config.json`:
    source .venv/bin/activate
    pip install paho-mqtt
    ```
+
 2. Start the MQTT broker (e.g. shiftr.io Desktop)
-3a. To run V1: ```bash sensors_start.bat```
-3b. To run V2: ```bash python3 main.py```
+3a. To run V1: ```sensors_start.bat```
+3b. To run V2: ```python3 main.py```

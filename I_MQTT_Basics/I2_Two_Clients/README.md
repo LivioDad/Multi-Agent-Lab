@@ -38,5 +38,6 @@ The agents can be configured by editing the constants in the scripts:
    python -m venv .venv
    source .venv/bin/activate
    pip install paho-mqtt
+   ```
 2. Start the MQTT broker (e.g. shiftr.io Desktop)
-3. Run master.bat
+3. Run ```master.bat```

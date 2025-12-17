@@ -54,5 +54,5 @@ Defined in `config.json`:
    pip install paho-mqtt
    ```
 2. Start the MQTT broker (e.g. shiftr.io Desktop)
-3. Run: ```bash python3 main.py```
+3. Run: ```python3 main.py```
 
