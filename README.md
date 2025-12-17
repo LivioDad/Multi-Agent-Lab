@@ -51,7 +51,3 @@ See III_Contract_Net/README.md
 ## Usage
 Each exercise can be executed independently.
 Refer to the README.md inside each directory for detailed instructions.
-
-## Notes
-This repository follows standard academic and software engineering practices
-with clear separation between exercises and concise documentation.
