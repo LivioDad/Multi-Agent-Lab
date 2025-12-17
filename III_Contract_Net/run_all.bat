@@ -7,7 +7,22 @@ set PROJ=%~dp0
 set VENV=%PROJ1%\.venv\Scripts\activate.bat
 
 if not exist "%VENV%" (
-  echo Virtual env not found. Update the path of VENV variable.
+  echo Virtual environment not found at:
+  echo   %PROJ1%\.venv
+  echo ----------------------------------------------
+  echo HOW TO SET IT UP:
+  echo -- Install Python.
+  echo -- Open Command Prompt in the project root:
+  echo      cd "%PROJ1%"
+  echo -- Create venv:
+  echo      python -m venv .venv
+  echo -- Activate venv:
+  echo      call .venv\Scripts\activate.bat
+  echo -- Install deps:
+  echo      pip install --upgrade pip
+  echo      pip install paho-mqtt
+  echo -- Run this .bat again.
+  echo ----------------------------------------------
   pause
   exit /b 1
 )
@@ -53,4 +68,5 @@ start "Supervisor" cmd /k call "%VENV%" ^&^& python "%PROJ%\supervisor.py" --job
 
 echo Launched 12 machines + 1 supervisor.
 pause
+
 
