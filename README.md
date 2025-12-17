@@ -13,12 +13,14 @@ The global specifications of the laboratory are provided in MQTT_Lab.pdf.
 
 ## Repository Structure
 
-.
-├── I_MQTT_Basics/
-├── II_Sensor_Network/
-├── III_Contract_Net/
-├── MQTT_Lab.pdf
-└── README.md
+   ```bash
+    .
+    ├── I_MQTT_Basics/
+    ├── II_Sensor_Network/
+    ├── III_Contract_Net/
+    ├── MQTT_Lab.pdf
+    └── README.md
+   ```
 
 ## Exercises
 
