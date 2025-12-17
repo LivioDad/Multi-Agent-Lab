@@ -17,7 +17,7 @@ if not exist "%VENV%" (
   echo -- Create venv:
   echo      python -m venv .venv
   echo -- Activate venv:
-  echo      call .venv\Scripts\activate.bat
+  echo      call .venv\Scripts\activate
   echo -- Install deps:
   echo      pip install --upgrade pip
   echo      pip install paho-mqtt
