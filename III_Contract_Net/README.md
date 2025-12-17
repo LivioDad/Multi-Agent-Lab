@@ -71,7 +71,7 @@ The scripts use a topic hierarchy like:
 
 ## Typical Run (Windows)
 1) Start your MQTT 
-2) Run the run_all.bat file (Windows)
+2) Run the run_all.bat file 
 
 ## Typical Run (Linux)
 1) Start your MQTT 
