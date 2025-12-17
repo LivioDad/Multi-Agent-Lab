@@ -7,7 +7,7 @@ set PROJ=%~dp0
 set VENV=%PROJ1%\.venv\Scripts\activate.bat
 
 if not exist "%VENV%" (
-  echo Virtual env not found. Run setup_env.bat first.
+  echo Virtual env not found. Update the path of VENV variable.
   pause
   exit /b 1
 )
@@ -53,3 +53,4 @@ start "Supervisor" cmd /k call "%VENV%" ^&^& python "%PROJ%\supervisor.py" --job
 
 echo Launched 12 machines + 1 supervisor.
 pause
+
