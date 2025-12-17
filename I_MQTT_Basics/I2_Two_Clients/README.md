@@ -32,7 +32,7 @@ The agents can be configured by editing the constants in the scripts:
 - `SLEEP`: delay before replying (seconds)
 - `topic1` / `topic2`: communication topics (hard-coded in the scripts)
 
-## How to run
+## How to run 
 1. (Optional) Create and activate a Python virtual environment and install dependencies:
    ```bash
    python -m venv .venv
@@ -40,4 +40,5 @@ The agents can be configured by editing the constants in the scripts:
    pip install paho-mqtt
    ```
 2. Start the MQTT broker (e.g. shiftr.io Desktop)
-3. Run ```master.bat```
+3. On Windows run ```master.bat```
+   On Linux/macOS run ```chmod +x master.sh``` and then ```./master.sh```

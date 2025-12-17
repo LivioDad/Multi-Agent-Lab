@@ -74,6 +74,14 @@ The scripts use a topic hierarchy like:
 2) Run the run_all.bat file 
 
 ## Typical Run (Linux)
+Automated procedure:
+```bash
+cd III_Contract_Net
+chmod +x run_all.sh
+./run_all.sh
+```
+
+Manual procedure:
 1) Start your MQTT 
 2) Start multiple machines with different capabilities:
    - `python machine.py --machine-id M1 --caps "cut:2,drill:5,paint:1.5"`
@@ -81,3 +89,5 @@ The scripts use a topic hierarchy like:
 3) Start the supervisor:
    - Baseline: `python supervisor.py --jobs "cut,drill,cut,paint,drill" --deadline 1.0 --wait-done`
    - Optimized: `python supervisor_opt.py --jobs "cut,drill,cut,paint,drill" --deadline 1.0 --min-bids 2 --quiet-ms 200 --guard-fast --alpha 1.15` 
+
+
