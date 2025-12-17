@@ -55,10 +55,10 @@ Defined in `config.json`:
    pip install paho-mqtt
    ```
 2. Start the MQTT broker (e.g. shiftr.io Desktop)
-3a. To run V1: (windows) ```sensors_start.bat```
+3. To run V1: (windows) ```sensors_start.bat```
                (Linux/macOS) ```
                               cd V1
                               chmod +x sensors_start.sh
                               ./sensors_start.sh
                               ```
-3b. To run V2: ```python3 main.py```
+4. To run V2: ```python3 main.py```
